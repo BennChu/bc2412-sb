@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
     // spring boot 有 error, 就會有人自然 call this method
     // will handle these two exceptions
     // either of these exceptions is thrown, this method will be called
-    @ExceptionHandler(value = {ArithmeticException.class, BusinessException.class})
+    @ExceptionHandler(value = {ArithmeticException.class, BusinessException.class, NullPointerException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST) 
     // HttpStatus.BAD_REQUEST is 400
     //200 OK

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.demo.bc_calculator.Service.BcCalculatorService;
 
 
-@RestController
+@RestController //RestController = Controller + ResponseBody
 public class BcCalculatorController {
 
     @Autowired
@@ -21,8 +21,8 @@ public class BcCalculatorController {
                                     @RequestParam String x, 
                                     @RequestParam String y) {
 
-            this.bcCalculatorService.checkOperation(operation);
-            this.bcCalculatorService.checkParam(x, y);
+            this.bcCalculatorService.validateOperation(operation);
+            this.bcCalculatorService.validateParam(x, y);
 
             return this.bcCalculatorService.operate(operation, x , y);
     }

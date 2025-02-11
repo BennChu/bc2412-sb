@@ -10,7 +10,7 @@ public class BcCalculatorService {
     private Double x;
     private Double y;
 
-    public void checkOperation(String operation) {
+    public void validateOperation(String operation) {
         if (!(operation.equals(Operation.SUM.getValue()) || operation.equals(Operation.SUBTRACT.getValue())
                                     || operation.equals(Operation.MULTIPLY.getValue())
                                     || operation.equals(Operation.DIVIDE.getValue()))) {
@@ -18,7 +18,7 @@ public class BcCalculatorService {
         }
    }       
 
-   public void checkParam(String x1, String y1) {
+   public void validateParam(String x1, String y1) {
         Double.parseDouble(x1);
         Double.parseDouble(y1);
    }
@@ -27,13 +27,14 @@ public class BcCalculatorService {
         x = Double.parseDouble(x1);
         y = Double.parseDouble(y1);
     
-        switch (operation) {
-            case "SUM" -> sum(x, y);
-            case "SUBTRACT" -> subtract(x, y);
-            case "MULTIPLY" -> mulitply(x, y);
-            case "DIVIDE" -> divide(x, y);
+        Double result = switch (operation) {
+                         case "SUM" -> sum(x, y);
+                         case "SUBTRACT" -> subtract(x, y);
+                         case "MULTIPLY" -> mulitply(x, y);
+                         case "DIVIDE" -> divide(x, y);
+                         default -> throw new IllegalStateException();
         };
-        return 0.0;
+        return result;
    }
 
    public Double sum(Double x, Double y) {

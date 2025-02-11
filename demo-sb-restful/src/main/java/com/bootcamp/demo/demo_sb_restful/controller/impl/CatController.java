@@ -1,12 +1,13 @@
-package com.bootcamp.demo.demo_sb_restful.controller;
+package com.bootcamp.demo.demo_sb_restful.controller.impl;
 
 //import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.demo.demo_sb_restful.Service.CatService;
 import com.bootcamp.demo.demo_sb_restful.model.Cat;
 import com.bootcamp.demo.demo_sb_restful.model.CatDatabase;
@@ -24,8 +25,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 // Controller -> The ways to control Cat resource
 // insert, update, delete, select
-@Controller
-@ResponseBody
+@RestController
+//@Controller
+//@ResponseBody
 public class CatController {
 
   // Contoller (call)-> Service (call)-> CatDatabase
@@ -63,9 +65,12 @@ public class CatController {
   // java 要諗 memory, 好多人 call memory 點算
 
   // insert
+  // http://localhost:8082/cat
   //post is create, 用家唔使 create id
   // for method POST, PUT, the request body contains data in a specific
   //representation format to create or update resources
+  // bind the HTTP request body to a method parameter in your controller.
+  // client sends JSON data, you can use @RequestBody to deserialize that JSON into a Java object.
   @PostMapping(value = "/cat")
   public Cat createCat(@RequestBody Cat cat) {
     if (this.catService.put(cat)) // 唔會 null pointer exception, new CatService.put(cat), 會開多好多 object
@@ -75,7 +80,9 @@ public class CatController {
   }
 
   // select
+  // 
   // public Cat getCats()
+  // http://localhost:8082/cats
   @GetMapping(value = "/cats")
   public List<Cat> getCats() {//cat[] 都一樣, 但唔easy 轉換
       return List.of(CatDatabase.HOME);//HOME is array List.of 都 enught
@@ -98,13 +105,14 @@ public class CatController {
       return CatDatabase.delete(id);
   }
 
-  //
+  // http://localhost:8082/cat?id=1
   @PutMapping(value = "/cat")
   public Boolean updateCat(@RequestParam Long id, @RequestBody Cat cat) {
          
       return CatDatabase.update(id, cat);
   }
 
+  // 
   @PatchMapping(value = "/cat/name/{name}")
   public Boolean updateCat(@RequestParam Long id, @PathVariable String name) {
       return CatDatabase.patchName(id, name);

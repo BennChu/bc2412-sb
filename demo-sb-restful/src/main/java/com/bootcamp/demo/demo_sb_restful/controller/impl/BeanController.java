@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_restful.controller;
+package com.bootcamp.demo.demo_sb_restful.controller.impl;
 
 import java.util.Arrays;
 import java.util.List;
