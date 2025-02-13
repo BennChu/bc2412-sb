@@ -21,6 +21,7 @@ public class OrderEntity {
     @Id // import the second @Id, should be jakarta.persistence.Id;
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
+    
     private Double amount;
     @Column(name = "order_date")
     private LocalDate orderDate;

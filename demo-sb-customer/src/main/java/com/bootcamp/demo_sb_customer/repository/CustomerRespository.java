@@ -7,7 +7,7 @@ import com.bootcamp.demo_sb_customer.entity.CustomerEntity;
 // JPA + Driver (Postgresql)
 // Hibernate generates the implementation class, which implements "CustomerRespository"
 
-// crud, create read update delete operation
+            // crud, create read update delete operation
 @Repository //Respository bean
 public interface CustomerRespository extends JpaRepository<CustomerEntity, Long> {
     
