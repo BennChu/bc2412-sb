@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+
+# Custom variables
+api:
+  coingecko:
+    domain: "coingecko.com"
+    endpoints:
+      usd: "/usd"
+
+  

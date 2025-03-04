@@ -19,6 +19,6 @@ public class BusinessException extends RuntimeException {
     }
 
     public SysCode getSysCode() {
-        return sysCode;
+        return this.sysCode;
     }
 }

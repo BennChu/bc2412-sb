@@ -1,12 +1,19 @@
 package com.bootcamp.demo_sb_customer.model.dto;
 
+import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 // Data Transfer Object DTO
 // model use for deserialization
 @Getter
-public class UserDto {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto implements Serializable{
 
     private Long id;
     private String name;
@@ -19,6 +26,9 @@ public class UserDto {
 
     
     @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Address {
         private String street;
         private String suite;
@@ -28,6 +38,9 @@ public class UserDto {
 
 
         @Getter
+        @Builder
+        @AllArgsConstructor
+        @NoArgsConstructor
         public static class Geo {
             @JsonProperty(value = "lat") // Json name is "lat", Jave name is latitude
             private String latitude;
@@ -38,6 +51,9 @@ public class UserDto {
 
 
     @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Company {
         private String name;
         private String catchPrase;

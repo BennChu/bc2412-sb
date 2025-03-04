@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.demo_sb_customer.dto.UserDTO;
 import com.bootcamp.demo_sb_customer.dto.mapper.UserDTOMapper;
 import com.bootcamp.demo_sb_customer.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -31,7 +32,7 @@ public class UserController {
 
     // http://localhost:8082/jsonplaceholder/users
     @GetMapping("/jsonplaceholder/users")
-    public List<UserDTO> getUsers() {
+    public List<UserDTO> getUsers() throws JsonProcessingException {
 
         // List<UserDto> serviceResults = this.userService.getUsers();
         // List<UserDTO> userDTOs = new ArrayList<>();
@@ -66,8 +67,8 @@ public class UserController {
         // }
 
         // List of UserDto -> List of UserDTO
-        return this.userService.getUsers().stream()
-                    .map(e -> userDTOMapper.map(e))
-                    .collect(Collectors.toList());
+        return this.userService.getUsers().stream() //
+                    .map(e -> userDTOMapper.map(e)) //
+                    .collect(Collectors.toList());  //
     }
 }

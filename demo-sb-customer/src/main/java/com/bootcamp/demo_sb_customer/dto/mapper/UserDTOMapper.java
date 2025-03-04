@@ -11,7 +11,7 @@ public class UserDTOMapper {
     // then can Autowired
     // only one, then no need new, add it to Bean at AppConfig @Bean
     public UserDTO map(UserDto dto) {
-
+        
         // create object
         UserDTO.Address.Geo userAddressGeo = UserDTO.Address.Geo.builder()
             .latitude(dto.getAddress().getGeo().getLatitude()) //
@@ -20,14 +20,20 @@ public class UserDTOMapper {
 
         // create object
         UserDTO.Address userAddress = UserDTO.Address.builder() //
-            .city(dto.getAddress().getCity()).street(dto.getAddress().getStreet()) //
-            .suite(dto.getAddress().getSuite()).geo(userAddressGeo) //
+            .city(dto.getAddress().getCity())
+            .street(dto.getAddress().getStreet()) //
+            .suite(dto.getAddress().getSuite())
+            .geo(userAddressGeo) //
             .zipcode(dto.getAddress().getZipcode()) //
             .build();
 
-        return UserDTO.builder().id(dto.getId()).name(dto.getName()) //
-            .email(dto.getEmail()).username(dto.getUsername()).address(userAddress) //
-            .build();
+        return UserDTO.builder()
+                .id(dto.getId())
+                .name(dto.getName()) //
+                .email(dto.getEmail())
+                .username(dto.getUsername())
+                .address(userAddress) //
+                .build();
 
     }
 }

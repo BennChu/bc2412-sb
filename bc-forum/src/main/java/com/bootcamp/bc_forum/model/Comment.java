@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class Comment {
-    private Long positid;
+    private Long postId;
     private Long id;
     private String name;
     private String email;

@@ -1,8 +1,10 @@
 package com.bootcamp.bc_forum.model;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class User {
 
     private Long id;
@@ -16,6 +18,7 @@ public class User {
 
     
     @Getter
+    @Builder
     public static class Address {
         private String street;
         private String suite;
@@ -25,6 +28,7 @@ public class User {
 
 
         @Getter
+        @Builder
         public static class Geo {
             private String lat;
             private String lng;
@@ -33,9 +37,10 @@ public class User {
 
 
     @Getter
+    @Builder
     public static class Company {
         private String name;
-        private String catchPrase;
+        private String catchPhrase;
         private String bs;
     }
     

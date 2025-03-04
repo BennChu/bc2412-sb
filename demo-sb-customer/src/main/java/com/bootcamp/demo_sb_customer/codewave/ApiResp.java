@@ -40,10 +40,16 @@ public class ApiResp<T> {
         private T data;
 
         public Builder<T> syscode(SysCode sysCode) {
-            this.code = sysCode.getCode();
+            this.code = sysCode.getCode(); // "this" refers to the current Builder<T>
             this.message = sysCode.getMessage();
             return this;
         }
+
+        // There is a naming conflict between a parameter and an instance 
+        // variable.
+        // You want to make it clear that you are referring to the
+        //  instance variable
+
 
 
         public Builder<T> code(String code) {

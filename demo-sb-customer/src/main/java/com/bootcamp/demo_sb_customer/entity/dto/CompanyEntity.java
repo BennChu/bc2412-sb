@@ -1,5 +1,6 @@
 package com.bootcamp.demo_sb_customer.entity.dto;
 
+import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CompanyEntity {
+public class CompanyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +29,8 @@ public class CompanyEntity {
     private String bs;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") // @JoinColumn annotation indicates the column in the owning entity's table 
+                                  // that references the primary key of the associated entity
     @Setter
     private UserEntity userEntity;
 }

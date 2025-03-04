@@ -20,7 +20,8 @@ import com.bootcamp.demo.demo_sb_helloworld.ShoppMall.Cinema.Film;
 @ResponseBody // JSON
 public class HelloworldController {
   // An API for Getting Resource
-  @GetMapping(value = "/greeting") // unique
+  // http://localhost:8081/greeting
+  @GetMapping(value = "/iphone/greeting") // unique
   public String hello() {
     return "Hello World !";
   }

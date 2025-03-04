@@ -13,19 +13,23 @@ public class BcCalculatorService {
     private Double x;
     private Double y;
 
-    public void validateOperation(String operation) {
+    public void validateOperation(String operation, String x1, String y1) throws OperationException {
         if (!(operation.equals(Operation.SUM.getValue())                        //
                     || operation.equals(Operation.SUBTRACT.getValue())          //
                     || operation.equals(Operation.MULTIPLY.getValue())          //
                     || operation.equals(Operation.DIVIDE.getValue()))) {        //
-            OperationException.of(SysCode.INVILID_OPERATOR);
+            OperationException.of(operation, x1, y1);
         }
-   }       
 
-   public void validateParam(String x1, String y1) {
         Double.parseDouble(x1);
         Double.parseDouble(y1);
-   }
+        
+   }       
+
+//    public void validateParam(String x1, String y1) {
+//         Double.parseDouble(x1);
+//         Double.parseDouble(y1);
+//    }
 
    public Double operate(String x1, String y1, String operation) {
         x = Double.parseDouble(x1);

@@ -15,15 +15,22 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRespository customerRespository;
 
+
+    // unit test
+    // assuem return john and mary
+    // 我地 test 緊, 係咪左手交右手
+    // test 緊, 係咩野都冇做
     @Override
     public List<CustomerEntity> getCustomers() {
-        return this.customerRespository.findAll();
+        return this.customerRespository.findAll(); // john 20, mary 40
     }
 
 
     @Override
     public CustomerEntity createCustomer(CustomerEntity customerEntity) {
+         
         return this.customerRespository.save(customerEntity);
+        
     }
 
     // @Override
@@ -31,5 +38,14 @@ public class CustomerServiceImpl implements CustomerService {
     //     return this.customerRespository.deleteById(Id);
     // }
 
-    
+    @Override
+    public List<CustomerEntity> getCustomerByJPQL(String customerName) {
+        return this.customerRespository.findByNameByJPQL(customerName);        
+    }
+
+    @Override
+    public List<CustomerEntity> getCustomerByNQ(String customerName) {
+        return this.customerRespository.findByNameByNativeQuery(customerName);
+    }
+
 }

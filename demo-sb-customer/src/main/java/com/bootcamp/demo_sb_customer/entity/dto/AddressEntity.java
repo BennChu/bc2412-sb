@@ -22,16 +22,17 @@ import lombok.Setter;
 @Builder
 public class AddressEntity {
     @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incremented ID
     private Long id;
-    private String street;
+    
+    private String street; // default 255
     private String suite;
     private String city;
     private String zipcode;
 
-    // FK
+    // set FK relationship with UserEntity
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") // column name in the addresss table
     @Setter // if i put it here, only can setter this variable
     private UserEntity userEntity;
 }

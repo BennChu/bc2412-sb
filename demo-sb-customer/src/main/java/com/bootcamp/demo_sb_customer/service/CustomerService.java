@@ -11,8 +11,11 @@ public interface CustomerService {
     List<CustomerEntity> getCustomers();
 
     CustomerEntity createCustomer(CustomerEntity customerEntity);
+
+    List<CustomerEntity> getCustomerByJPQL(String customerName);
     
    // CustomerEntity deleteByIdCustomer(Long Id);
+   List<CustomerEntity> getCustomerByNQ(String customerName);
 
     
 }

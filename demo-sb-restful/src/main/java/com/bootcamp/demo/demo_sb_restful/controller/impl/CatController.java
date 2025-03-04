@@ -25,12 +25,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 // Controller -> The ways to control Cat resource
 // insert, update, delete, select
-@RestController
-//@Controller
-//@ResponseBody
+@RestController // = @Contorller + @ResponseBody
 public class CatController {
 
-  // Contoller (call)-> Service (call)-> CatDatabase
+  // Contoller (call) -> Service (call) -> CatDatabase
 
   // @ComponentScan
   // - Try to scan all classes with 
@@ -39,7 +37,7 @@ public class CatController {
   //        CatContoller bean creation. If CatService bean not ready, CatController bean creation
   //        fail, server start fail.
 
-  // IOC, 觀察所有 dependency 狀態, 先 start server
+  // IOC, Inversion of Control 觀察所有 dependency 狀態, 先 start server
 
   // 我需要 new, 有人 help 我 new
   // find "caused by"
