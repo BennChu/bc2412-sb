@@ -18,11 +18,12 @@ public class CandleStickController {
     
     // http://localhost:8081/candlestick1d
     @GetMapping(value = "/candlestick1d")
-    public List<CandleStick1DData> getData1D() { //Model model
+    public String getData1D(Model model) { //
         String url = 
             "https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=1&x-cg-pro-api-key=CG-SyaMvK1V8kcA9MNue3H1NKXA";
         CandleStick1DData[] candleStick = this.restTemplate.getForObject(url, CandleStick1DData[].class);
-        return Arrays.asList(candleStick);
+        model.addAttribute(, candleStick)
+        return "CandleStick1D.html";
     }
     
 }
