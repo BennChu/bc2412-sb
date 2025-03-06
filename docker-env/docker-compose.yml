@@ -1,0 +1,11 @@
+service:                                    # Defines the services (containers) to run
+  demo-coin-web:                            # Name of the service
+    image: demo-coin-web:1.0.0              # Specifies the image to use for the container
+    container_name: demo-coin-web-container # Sets a custom name for the container
+    build:                                  # Configuration for building the image
+      context: ./demo-coin-web              # Directory containing the build context
+      dockerfile: Dockerfile                # Name of the Dockerfile to use
+    networks:                               # Network settings for the service
+      - bootcamp_network                    # Connects the service to this network
+    ports:
+      - "8197:8097"                         # Maps port 8197 on the host to 8097 in the container
