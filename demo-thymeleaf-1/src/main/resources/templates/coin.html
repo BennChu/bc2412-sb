@@ -1,0 +1,58 @@
+<!-- coin-data.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Coin Data</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="loading" class="loading">Loading coin data...</div>
+    <h1>Coin Data</h1>
+    <table id="coinTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Current Price (USD)</th>
+                <th>Market Capitalization</th>
+            </tr>
+        </thead>
+        <tbody id="coinData">
+            <tr th:each="coinData : ${coinList}">
+                <td th:text="${coinData.id}"></td>
+                <td><img th:src="${coinData.image}" alt="Coin Image" height="30"></td>
+                <td th:text="${coinData.currentPrice}"></td>
+                <td th:text="${coinData.marketCap}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            // Show table immediately since we have initial data
+            $('#loading').hide();
+            $('#coinTable').show();
+
+            // Function to fetch and update table data
+            function updateCoinData() {
+                $.ajax({
+                    url: '/coins', // Your controller endpoint
+                    type: 'GET',
+                    success: function(data) {
+                        // Extract the coin data from the HTML response
+                        let coinData = $(data).find('#coinData').html();
+                        $('#coinData').html(coinData);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#loading').text('Error loading data: ' + error).show();
+                        $('#coinTable').hide();
+                    }
+                });
+            }
+
+            // Refresh data every 60 seconds
+            setInterval(updateCoinData, 60000);
+        });
+    </script>
+</body>
+</html>
